@@ -20,6 +20,7 @@ import UpdateProduct from './Pages/admin/pages/UpdateProduct';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate } from 'react-router';
+import Profile from './Components/Profile/Profile';
 
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/allproducts" element={<Allproducts/>} />
         <Route path="/signup" element={<Signup/>} />
+        <Route path='/profile' element={<Profile/>}/>
         <Route path='/productinfo/:id'element={<ProductInfo/>}/>
         <Route path='/addproduct' element={
         <ProtectedRoutesForAdmin>
