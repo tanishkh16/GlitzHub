@@ -4,7 +4,7 @@ import MyContext from '../../Context/data/MyContext'
 
 export default function Testimonials() {
     const context = useContext(MyContext);
-    const { mode, toggle } = context;
+    const { mode } = context;
   return (
     <div>
              <section className="text-gray-600 body-font mb-10">
