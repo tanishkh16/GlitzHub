@@ -49,9 +49,10 @@ export default function MyState(props) {
 })
 
 const addProduct=async()=>{
-if(products.title==='' || products.price==='' || products.imageUrl==='' || products.category==='' || products.description===''){
+  if(products.title==='' || products.price==='' || products.imageUrl==='' || products.category==='' || products.description===''){
     toast.error('Please fill all the fields');
-}
+  }
+  
 const productRef = collection(fireDb, "products")
 setLoading(true)
 try{
@@ -98,27 +99,54 @@ const getProductData=async()=>{
           
           const edithandle=(item)=>{
             setProducts(item);
+            console.log(item);
           }
           
-          const updateProduct=async()=>{
-            setLoading(true)
-            try{
-              await setDoc(doc(fireDb, "products", products.id), products);
-              toast.success("Product Updated Successfully")
+          // const updateProduct=async()=>{
+          //   setLoading(true)
+          //   try{
+          //     await setDoc(doc(fireDb, "products", products.id), products);
+          //     toast.success("Product Updated Successfully")
+          //     getProductData();
+          //     setTimeout(() => {
+          //       window.location.href='/dashboard'
+          //     },800);
+          //     setLoading(false)
+              
+              
+          //   }
+          //   catch(err){
+          //     console.log(err);
+          //     toast.error(err.message);
+          //     setLoading(false);  
+          //   }
+          // }
+          const updateProduct = async (item) => {
+            setLoading(true);
+            
+            try {
+              // Assuming products.id is the unique identifier for the product
+              const productId = products.id;
+          
+              // Use the specific product ID when updating the Firestore document
+              await setDoc(doc(fireDb, "products", productId), products);
+          
+              toast.success("Product Updated Successfully");
+          
+              // Optionally, you may refresh the product data
               getProductData();
+          
               setTimeout(() => {
-                window.location.href='/dashboard'
-              },800);
-              setLoading(false)
+                window.location.href = '/dashboard';
+              }, 800);
               
-              
-            }
-            catch(err){
+              setLoading(false);
+            } catch (err) {
               console.log(err);
               toast.error(err.message);
-              setLoading(false);  
+              setLoading(false);
             }
-          }
+          };
           
           
           const deleteProduct=async(item)=>{

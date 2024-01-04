@@ -11,12 +11,12 @@ export default function Order() {
   const context = useContext(myContext)
   const { mode, loading, order } = context
   return (
-    <div>
-      <Layout>
+    <Layout>
+        <div className='mt-10'>
       {loading && <Loader />}
       {order.length > 0 ?
         (<>
-          <div className=" h-full pt-10">
+          <div className=" h-full pt-10 mb-44">
             {
               order.filter(obj => obj.userid == userid).map((order) => {
                 // order.cartItems.map()
@@ -48,13 +48,15 @@ export default function Order() {
         </>)
         :
         (
-          <h2 className=' text-center tex-2xl text-white'>Not Order</h2>
+          <>
+          <div className='border mb-10 flex justify-center'>
+          <h2 className=' text-center tex-2xl  text-green-500'>Not Order</h2></div></>
         )
 
       }
 
+    </div>
       </Layout>
       
-    </div>
   )
 }

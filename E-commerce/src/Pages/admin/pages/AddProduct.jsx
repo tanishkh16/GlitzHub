@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext} from 'react';
 import MyContext from '../../../Context/data/MyContext'
 
@@ -7,6 +7,8 @@ import MyContext from '../../../Context/data/MyContext'
 function AddProduct() {
     const context = useContext(MyContext);
     const { products,setProducts,addProduct } = context;
+
+    
    
  
     
